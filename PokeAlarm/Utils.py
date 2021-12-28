@@ -7,6 +7,7 @@ import logging
 from math import radians, sin, cos, atan2, sqrt, degrees
 import os
 import sys
+import urllib.parse
 # 3rd Party Imports
 # Local Imports
 from PokeAlarm import not_so_secret_url
@@ -439,7 +440,8 @@ def get_ex_eligible_emoji(ex_eligible):
 # Returns a String link to Google Maps Pin at the location
 def get_gmaps_link(lat, lng):
     latlng = '{:5f},{:5f}'.format(lat, lng)
-    return 'http://maps.google.com/maps?q={}'.format(latlng)
+    latlng = urllib.parse.quote_plus(latlng)
+    return 'https://www.google.com/maps/search/?api=1&query={}'.format(latlng)
 
 
 # Returns a String link to Apple Maps Pin at the location
